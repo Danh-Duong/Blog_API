@@ -1,0 +1,11 @@
+{
+  "title": "Chấm hỏi",
+  "content": "Đáp án nào đây ta?",
+  "categoryId" : 4,
+  "pollRequest": {
+    "title" : "2+2=?",
+    "answerPolls":[
+      "1",
+      "4"
+    ]}
+}
