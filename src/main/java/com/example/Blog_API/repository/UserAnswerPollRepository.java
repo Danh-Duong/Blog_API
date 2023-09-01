@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserAnswerPollRepository extends JpaRepository<UserAnswerPoll, UserPollKey> {
+    UserAnswerPoll findByUserIdAndAnswerPollId(Long userId, Long answerPollId);
+
+
 }

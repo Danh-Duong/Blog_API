@@ -15,15 +15,15 @@ public class AnswerPollController {
     AnswerPollService answerPollService;
 
     // liên quan đến câu trả lời
-    @PostMapping("answer/{blogId}/{pollId}")
-    public ResponseEntity<?> answerPoll(@PathVariable Long blogId, @PathVariable Long pollId, @RequestParam Long answerPollId, @RequestHeader(name = "Authorization") String jwt){
-        return ResponseEntity.ok(answerPollService.answerPoll(blogId, pollId, answerPollId, jwt));
-    }
+//    @PostMapping("answer/{blogId}/{pollId}/{answerPollId}")
+//    public ResponseEntity<?> answerPoll(@PathVariable Long blogId, @PathVariable Long pollId, @PathVariable Long answerPollId, @RequestHeader(name = "Authorization") String jwt){
+//        return ResponseEntity.ok(answerPollService.answerPoll(blogId, pollId, answerPollId, jwt));
+//    }
 
 
-    @PutMapping("updateAnswer/{blogId}/{pollId}")
-    public ResponseEntity<?> updateAnswerPoll(@PathVariable Long blogId, @PathVariable Long pollId, @RequestParam Long answerPollId, @RequestHeader(name = "Authorization") String jwt){
-        return ResponseEntity.ok(answerPollService.answerPoll(blogId, pollId, answerPollId, jwt));
+    @PutMapping("updateAnswer/{blogId}/{pollId}/{answerPollId}")
+    public ResponseEntity<?> updateAnswerPoll(@PathVariable Long blogId, @PathVariable Long pollId, @PathVariable Long answerPollId, @RequestHeader(name = "Authorization") String jwt){
+        return ResponseEntity.ok(answerPollService.updateAnswerPoll(blogId, pollId, answerPollId, jwt));
     }
 
 
