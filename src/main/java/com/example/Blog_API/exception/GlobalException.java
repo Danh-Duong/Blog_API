@@ -67,7 +67,7 @@ public class GlobalException {
         errorResponse.setErrorDetails(errorDetails);
         errorResponse.setResponseStatus(ResponseCode.DUPLICATED.name());
         errorResponse.setResponseCode(ResponseCode.DUPLICATED.getCode());
-        return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<ErrorResponse>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
