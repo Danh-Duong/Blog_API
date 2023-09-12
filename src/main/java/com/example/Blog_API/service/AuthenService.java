@@ -49,6 +49,9 @@ public class AuthenService {
     @Autowired
     EmailTokenRepository emailTokenRepository;
 
+    @Autowired
+    MyEmailService emailService;
+
     public LoginResponse loginUser(LoginRequest loginRequest) throws BadCredentialsException {
         Authentication auth;
         try{
@@ -174,6 +177,9 @@ public class AuthenService {
             emailToken.setExpiredTime(new Date(now.getTime() + EMAIL_TOKEN_EXPIRED));
             emailToken.setUserId(user.getId());
             emailTokenRepository.save(emailToken);
+
+            // gửi email token
+            emailService.sendEmail(email,"Xác nhận","Mã code để ResetPass là: " + emailToken.getToken());
             return emailToken;
         }
         catch (Exception e){
@@ -182,7 +188,6 @@ public class AuthenService {
     }
 
     public void resetPass(ResetPassRequest resetPassRequest){
-//        try{
             EmailToken emailToken=emailTokenRepository.findByToken(resetPassRequest.getToken());
             if (emailToken==null)
                 throw new RuntimeException("This token email is non-exsit");
@@ -192,11 +197,6 @@ public class AuthenService {
             user.setPassword(passwordEncoder.encode(resetPassRequest.getNewPass()));
             userRepository.save(user);
             emailTokenRepository.delete(emailToken);
-//        }
-//        catch (Exception e){
-//            throw new RuntimeException(e.getMessage());
-////            e.printStackTrace();
-//        }
     }
 
     public boolean validDateToken(String token){
